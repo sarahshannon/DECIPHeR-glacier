@@ -1,0 +1,35 @@
+FOBJ=./dyna_climate.o ./dyna_common_types.o ./dyna_date.o ./dyna_dynamic_dist.o ./dyna_file_open.o ./dyna_genpar.o ./dyna_glacier.o ./dyna_glacier_flux.o ./dyna_init_glacier.o ./dyna_initialise_run.o ./dyna_init_satzone.o ./dyna_inputs.o ./dyna_main.o ./dyna_main_loop.o ./dyna_mc_setup.o ./dyna_modelstruct_setup.o ./dyna_param_setup.o ./dyna_project.o ./dyna_random.o ./dyna_read_routingdata.o ./dyna_results_ac.o ./dyna_results_ts.o ./dyna_river.o ./dyna_root_zone1.o ./dyna_satzone_analyticalsolver.o ./dyna_snowmelt.o ./dyna_topmod.o ./dyna_tread_dyna.o ./dyna_unsat_zone1.o ./dyna_write_output.o 
+
+DECIPHeR_v1.exe: $(FOBJ)
+	$(FC) -o $@ $(FFLAGS) $(LDFLAGS) $(FOBJ) $(LIBS)
+
+./dyna_climate.o : ../dyna_climate.f90 ./dyna_common_types.o 
+./dyna_common_types.o : ../dyna_common_types.f90 
+./dyna_date.o : ../dyna_date.f90 
+./dyna_dynamic_dist.o : ../dyna_dynamic_dist.f90 ./dyna_common_types.o 
+./dyna_file_open.o : ../dyna_file_open.f90 
+./dyna_genpar.o : ../dyna_genpar.f90 ./dyna_random.o ./dyna_common_types.o 
+./dyna_glacier.o : ../dyna_glacier.f90 ./dyna_common_types.o 
+./dyna_glacier_flux.o : ../dyna_glacier_flux.f90 ./dyna_common_types.o 
+./dyna_init_glacier.o : ../dyna_init_glacier.f90 ./dyna_common_types.o 
+./dyna_initialise_run.o : ../dyna_initialise_run.f90 ./dyna_common_types.o 
+./dyna_init_satzone.o : ../dyna_init_satzone.f90 ./dyna_common_types.o 
+./dyna_inputs.o : ../dyna_inputs.f90 ./dyna_date.o ./dyna_common_types.o 
+./dyna_main.o : ../dyna_main.f90 ./dyna_read_routingdata.o ./dyna_file_open.o ./dyna_main_loop.o ./dyna_genpar.o ./dyna_modelstruct_setup.o ./dyna_mc_setup.o ./dyna_inputs.o ./dyna_tread_dyna.o ./dyna_random.o ./dyna_project.o ./dyna_common_types.o 
+./dyna_main_loop.o : ../dyna_main_loop.f90 ./dyna_write_output.o ./dyna_topmod.o ./dyna_init_glacier.o ./dyna_init_satzone.o ./dyna_initialise_run.o ./dyna_param_setup.o ./dyna_common_types.o 
+./dyna_mc_setup.o : ../dyna_mc_setup.f90 ./dyna_common_types.o 
+./dyna_modelstruct_setup.o : ../dyna_modelstruct_setup.f90 ./dyna_common_types.o 
+./dyna_param_setup.o : ../dyna_param_setup.f90 ./dyna_common_types.o 
+./dyna_project.o : ../dyna_project.f90 ./dyna_common_types.o 
+./dyna_random.o : ../dyna_random.f90 
+./dyna_read_routingdata.o : ../dyna_read_routingdata.f90 ./dyna_common_types.o 
+./dyna_results_ac.o : ../dyna_results_ac.f90 ./dyna_common_types.o 
+./dyna_results_ts.o : ../dyna_results_ts.f90 ./dyna_common_types.o 
+./dyna_river.o : ../dyna_river.f90 ./dyna_common_types.o 
+./dyna_root_zone1.o : ../dyna_root_zone1.f90 ./dyna_common_types.o 
+./dyna_satzone_analyticalsolver.o : ../dyna_satzone_analyticalsolver.f90 ./dyna_common_types.o 
+./dyna_snowmelt.o : ../dyna_snowmelt.f90 ./dyna_common_types.o 
+./dyna_topmod.o : ../dyna_topmod.f90 ./dyna_satzone_analyticalsolver.o ./dyna_results_ts.o ./dyna_river.o ./dyna_results_ac.o ./dyna_unsat_zone1.o ./dyna_root_zone1.o ./dyna_dynamic_dist.o ./dyna_glacier_flux.o ./dyna_glacier.o ./dyna_snowmelt.o ./dyna_climate.o ./dyna_common_types.o 
+./dyna_tread_dyna.o : ../dyna_tread_dyna.f90 ./dyna_common_types.o 
+./dyna_unsat_zone1.o : ../dyna_unsat_zone1.f90 ./dyna_common_types.o 
+./dyna_write_output.o : ../dyna_write_output.f90 ./dyna_common_types.o 
